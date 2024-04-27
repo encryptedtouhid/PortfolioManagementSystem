@@ -3,6 +3,8 @@ import AddTradeModal from '../AddTradePage/AddTradePage';
 import { fetchCustomerInfo } from './customerService';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import InvestmentStrategies from '../../enums/InvestmentStrategies';
+
 
 function Header() {
   const [customerInfo, setCustomerInfo] = useState({});
@@ -26,7 +28,7 @@ function Header() {
     fetchData();
   }, []);
 
-  const { CustomerName, PortfolioValue } = customerInfo;
+  const { CustomerName, PortfolioValue, InvestmentStrategy } = customerInfo;
 
   return (
     <div className="header-container">
@@ -35,12 +37,13 @@ function Header() {
         &nbsp;
         &nbsp;
         {PortfolioValue && (
-          <p className="d-inline-block"> ( Portfolio Number: {PortfolioValue} )</p>
+          <p className="d-inline-block"> ( Portfolio Number: {PortfolioValue} )</p>        
         )}
       </div>
       <button className="btn btn-primary" onClick={handleAddTradeClick}>Add Trade</button>
       <ToastContainer />
       <AddTradeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <p hidden>{InvestmentStrategies[InvestmentStrategy]}</p>
     </div>
   );
 }
