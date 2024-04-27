@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { fetchPortfolioData } from './portfolioService';
 import Pagination from 'react-js-pagination';
 
 function PortfolioDetailsPage() {
@@ -16,8 +16,7 @@ function PortfolioDetailsPage() {
           setPortfolioData(JSON.parse(cachedData));
           setLoading(false);
         } else {
-          const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/portfolio`);
-          const responseData = response.data;
+          const responseData = await fetchPortfolioData();
           setPortfolioData(responseData);
           setLoading(false);
           localStorage.setItem('portfolioData', JSON.stringify(responseData));

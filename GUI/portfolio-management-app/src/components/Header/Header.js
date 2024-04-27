@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import AddTradeModal from '../AddTradePage/AddTradePage';
-import axios from 'axios';
+import { fetchCustomerInfo } from './customerService';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 function Header() {
   const [customerInfo, setCustomerInfo] = useState({});
@@ -14,10 +13,9 @@ function Header() {
   };
 
   useEffect(() => {
-    const fetchCustomerInfo = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/getCustomerInfo`);
-        const customerData = response.data;
+        const customerData = await fetchCustomerInfo();
         setCustomerInfo(customerData);
         toast.success('Customer information loaded successfully!');
       } catch (error) {
@@ -25,7 +23,7 @@ function Header() {
       }
     };
 
-    fetchCustomerInfo();
+    fetchData();
   }, []);
 
   const { CustomerName, PortfolioValue } = customerInfo;

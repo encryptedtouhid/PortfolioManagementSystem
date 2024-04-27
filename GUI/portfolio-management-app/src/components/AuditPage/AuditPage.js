@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { fetchAuditLogs } from './auditService';
 
 function AuditPage() {
   const [auditLogs, setAuditLogs] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_ENDPOINT}/getAuditLog`)
-      .then(response => response.json())
-      .then(data => {
-        setAuditLogs(data.audit_logs);
-      })
-      .catch(error => {
+    const fetchData = async () => {
+      try {
+        const logs = await fetchAuditLogs();
+        setAuditLogs(logs);
+      } catch (error) {
         console.error('Error fetching audit logs:', error);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
