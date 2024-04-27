@@ -14,4 +14,13 @@ public class PortfolioController {
                 .tradeId("123")
                 .build();
     }
+
+    @PostMapping("/{portfolioId}/audit")
+    @ResponseBody
+    public AddTradeResponse getAudit(@PathVariable String portfolioId) {
+        return AddTradeResponse.builder()
+                .portfolioId(portfolioId)
+                .tradeId("123")
+                .build();
+    }
 }
