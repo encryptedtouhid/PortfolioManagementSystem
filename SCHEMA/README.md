@@ -57,11 +57,15 @@ REFERENCES `portfolio_schema`.`instrument` (id));
 CREATE TABLE `portfolio_schema`.`audit` (
 `id` VARCHAR(45) NOT NULL,
 `transaction_ref` VARCHAR(45) NOT NULL,
+`portfolio_id` VARCHAR(45) NOT NULL,
 `instrument_id` VARCHAR(45) NOT NULL,
 `unit` INT NOT NULL,
-`trade_type` VARCHAR(3) NOT NULL,
+`trade_type` VARCHAR(4) NOT NULL,
 `audit_date` DATETIME NOT NULL,
 PRIMARY KEY (`id`),
 CONSTRAINT `audit_instrument_fk`
 FOREIGN KEY (instrument_id)
-REFERENCES `portfolio_schema`.`instrument` (id));
+REFERENCES `portfolio_schema`.`instrument` (id),
+CONSTRAINT `audit_portfolio_fk`
+FOREIGN KEY (portfolio_id)
+REFERENCES `portfolio_schema`.`portfolio` (id));
