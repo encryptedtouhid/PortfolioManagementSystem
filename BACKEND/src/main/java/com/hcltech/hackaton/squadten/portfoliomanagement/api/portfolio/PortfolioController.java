@@ -44,9 +44,9 @@ public class PortfolioController {
     ){
         Position p = new Position();
         jdbcTemplate.query("select * from position where porfolio_id="+portfolioId, (resultSet, rowNum) -> {
-            int Id = resultSet.getInt("Id");
-            int porfolio_id = resultSet.getInt("porfolio_id");
-            int instrument_id = resultSet.getInt("instrument_id");
+            int Id = Integer.parseInt(resultSet.getString("Id"));
+            int porfolio_id = Integer.parseInt(resultSet.getString("porfolio_id"));
+            int instrument_id = Integer.parseInt(resultSet.getString("instrument_id"));
             p.setId(Id);
             p.setPorfolio_id(porfolio_id);
             p.setInstrument_id(instrument_id);
