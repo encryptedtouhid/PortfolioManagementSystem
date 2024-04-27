@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import AddTradeModal from '../AddTradePage/AddTradePage';
+import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
+
 
 function Header() {
   const [customerInfo, setCustomerInfo] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleAddTradeClick = () => {
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     const fetchCustomerInfo = async () => {
@@ -33,8 +40,9 @@ function Header() {
           <p className="d-inline-block"> ( Portfolio Number: {PortfolioValue} )</p>
         )}
       </div>
-      <button className="btn btn-primary">Add Trade</button>
+      <button className="btn btn-primary" onClick={handleAddTradeClick}>Add Trade</button>
       <ToastContainer />
+      <AddTradeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }
