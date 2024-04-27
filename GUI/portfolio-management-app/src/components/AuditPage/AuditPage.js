@@ -1,11 +1,11 @@
 // components/Header.js
 import React from 'react';
 
-function AddTradePage() {
+function AuditPage() {
   return (
     <div>
-      <h1>Add Trade Page</h1>     
+      <h1>Add Audit Page</h1>     
     </div>
   );
 }
-export default AddTradePage;
+export default AuditPage;

@@ -19,18 +19,6 @@ function HomePage() {
       <div className="tabs-container">
         <HomePageTabs selectedTab={selectedTab} onTabChange={handleTabChange} />
       </div>
-      <div className="content-container">
-        {selectedTab === 'positions' && (
-          <div>
-            <PortfolioDetailsPage/>
-          </div>
-        )}
-        {selectedTab === 'audit' && (
-          <div>
-           <AddTradePage/>
-          </div>
-        )}
-      </div>
     </div>
   );
 }
