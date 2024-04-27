@@ -15,11 +15,13 @@ public class PortfolioController {
 
     @PostMapping("/{portfolioId}/addTrade")
     @ResponseBody
-    public AddTradeResponse addTrade(@PathVariable String portfolioId) {
-        tradeService.addTrade(AddTradeRequest.builder().portfolioId(portfolioId).build());
+    public AddTradeResponse addTrade(@PathVariable String portfolioId, @RequestBody AddTradeRequest addTradeRequest) {
+
+        tradeService.addTrade(addTradeRequest);
+
         return AddTradeResponse.builder()
                 .portfolioId(portfolioId)
-                .tradeId("123")
+                .tradeInstrumentId(addTradeRequest.getInstrumentId())
                 .build();
     }
 
@@ -28,7 +30,7 @@ public class PortfolioController {
     public AddTradeResponse getAudit(@PathVariable String portfolioId) {
         return AddTradeResponse.builder()
                 .portfolioId(portfolioId)
-                .tradeId("123")
+                .tradeInstrumentId("123")
                 .build();
     }
 }

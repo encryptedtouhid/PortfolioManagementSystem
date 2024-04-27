@@ -16,7 +16,7 @@ public class KafkaAuditProducer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendMessage(AddTradeRequest tradeRequest) {
-        this.kafkaTemplate.send(TOPIC, AuditMessage.builder().id(123).portfolioId(UUID.randomUUID().toString()).build());
+    public void sendMessage(AuditMessage auditMessage) {
+        this.kafkaTemplate.send(TOPIC, auditMessage);
     }
 }
