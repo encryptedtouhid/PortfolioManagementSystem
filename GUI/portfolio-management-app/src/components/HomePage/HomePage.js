@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import HomePageTabs from './HomePageTabs';
 import PortfolioDetailsPage from '../../components/PortfolioDetailsPage/PortfolioDetailsPage';
 import AddTradePage from '../../components/AddTradePage/AddTradePage';
+import './HomePage.css'
 
 function HomePage() {
   const [selectedTab, setSelectedTab] = useState('positions');
@@ -13,12 +14,22 @@ function HomePage() {
   };
 
   return (
-    <div>
+    <div className="container">
       <Header />
-      <HomePageTabs selectedTab={selectedTab} onTabChange={handleTabChange} />
-      <div>
-        {selectedTab === 'positions' && <PortfolioDetailsPage />}
-        {selectedTab === 'audit' && <AddTradePage />}
+      <div className="tabs-container">
+        <HomePageTabs selectedTab={selectedTab} onTabChange={handleTabChange} />
+      </div>
+      <div className="content-container">
+        {selectedTab === 'positions' && (
+          <div>
+            <PortfolioDetailsPage/>
+          </div>
+        )}
+        {selectedTab === 'audit' && (
+          <div>
+           <AddTradePage/>
+          </div>
+        )}
       </div>
     </div>
   );
