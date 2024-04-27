@@ -8,5 +8,5 @@ import lombok.Getter;
 public class AddTradeResponse {
 
     private String portfolioId;
-    private String tradeId;
+    private String tradeInstrumentId;
 }
