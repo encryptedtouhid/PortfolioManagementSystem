@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 function Header() {
@@ -10,8 +12,9 @@ function Header() {
         const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/getCustomerInfo`);
         const customerData = response.data;
         setCustomerInfo(customerData);
+        toast.success('Customer information loaded successfully!');
       } catch (error) {
-        console.error('Error fetching customer information:', error);
+        toast.error('Error fetching customer information:');
       }
     };
 
@@ -31,6 +34,7 @@ function Header() {
         )}
       </div>
       <button className="btn btn-primary">Add Trade</button>
+      <ToastContainer />
     </div>
   );
 }
