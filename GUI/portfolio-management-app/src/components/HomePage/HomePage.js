@@ -2,8 +2,6 @@
 import React, { useState } from 'react';
 import Header from '../Header/Header';
 import HomePageTabs from './HomePageTabs';
-import PortfolioDetailsPage from '../../components/PortfolioDetailsPage/PortfolioDetailsPage';
-import AddTradePage from '../../components/AddTradePage/AddTradePage';
 import './HomePage.css'
 
 function HomePage() {

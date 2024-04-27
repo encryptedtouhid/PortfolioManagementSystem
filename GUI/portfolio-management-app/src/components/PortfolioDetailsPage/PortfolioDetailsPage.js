@@ -8,7 +8,6 @@ function PortfolioDetailsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Check if data is already cached in local storage
         const cachedData = localStorage.getItem('portfolioData');
         if (cachedData) {
           setPortfolioData(JSON.parse(cachedData));
@@ -16,10 +15,8 @@ function PortfolioDetailsPage() {
         } else {
           const response = await axios.get('http://localhost:5000/portfolio');
           const responseData = response.data;
-          // Update state with fetched data
           setPortfolioData(responseData);
           setLoading(false);
-          // Cache data in local storage
           localStorage.setItem('portfolioData', JSON.stringify(responseData));
         }
       } catch (error) {
@@ -29,22 +26,16 @@ function PortfolioDetailsPage() {
     };
 
     fetchData();
-
-    // Optionally, you can clear the cache after a certain period of time
-    // setTimeout(() => {
-    //   localStorage.removeItem('portfolioData');
-    // }, expirationTimeInMilliseconds);
-
   }, []);
 
   return (
-    <div>
+    <div className="container mt-4">
       <h2>Portfolio Details</h2>
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <table className="table">
-          <thead>
+        <table className="table table-striped table-bordered">
+          <thead className="thead-dark">
             <tr>
               <th>Customer ID</th>
               <th>Customer Name</th>
