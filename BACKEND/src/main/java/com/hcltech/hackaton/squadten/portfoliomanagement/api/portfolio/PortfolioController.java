@@ -37,7 +37,7 @@ public class PortfolioController {
                 .build();
     }
 
-    @GetMapping("/portfolios/{portfolioId}/currentPositions/") //http://localhost:8082/portfolios/1/currentPositions/
+    @GetMapping("/portfolios/{portfolioId}/currentPositions/") //http://localhost:8080/portfolios/1/currentPositions/
     @ResponseBody
     public ResponseEntity currentPositions(
             @PathVariable int portfolioId
