@@ -4,7 +4,7 @@ function AuditPage() {
   const [auditLogs, setAuditLogs] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/getAuditLog')
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/getAuditLog`)
       .then(response => response.json())
       .then(data => {
         setAuditLogs(data.audit_logs);

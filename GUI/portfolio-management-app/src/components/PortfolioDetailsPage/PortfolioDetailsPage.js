@@ -16,7 +16,7 @@ function PortfolioDetailsPage() {
           setPortfolioData(JSON.parse(cachedData));
           setLoading(false);
         } else {
-          const response = await axios.get('http://localhost:5000/portfolio');
+          const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/portfolio`);
           const responseData = response.data;
           setPortfolioData(responseData);
           setLoading(false);

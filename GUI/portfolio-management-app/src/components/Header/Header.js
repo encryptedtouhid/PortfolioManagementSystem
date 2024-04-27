@@ -7,7 +7,7 @@ function Header() {
   useEffect(() => {
     const fetchCustomerInfo = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/getCustomerInfo');
+        const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/getCustomerInfo`);
         const customerData = response.data;
         setCustomerInfo(customerData);
       } catch (error) {
